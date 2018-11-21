@@ -1,0 +1,41 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+% Configuration
+\documentclass[11pt, letterpaper]{../texmf/tex/latex/awesome-cv}
+\definecolor{hyperPink}{HTML}{B509AC}
+\definecolor{hyperRed}{HTML}{da372a}
+\usepackage{xcolor}
+\newcommand{\MYhref}[3][darktext]{\href{#2}{\color{#1}{#3}}}
+
+% Configure page margins with geometry
+\geometry{left=3.0cm, top=1.0cm, right=3.0cm, bottom=1.25cm, footskip=.15cm}
+\fontdir[../fonts/]
+\colorlet{awesome}{awesome-red}
+\definecolor{graytext}{HTML}{5D5D5D}
+\setbool{acvSectionColorHighlight}{true}
+\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
+\makeatletter
+\patchcmd{\@sectioncolor}{\color}{\mdseries\color}{}{}
+\makeatother
+
+% Personal information
+\name{Emir}{Turkes}
+\position{Computational Neuroscientist}
+\mobile{(732) 735-7169}
+\email{eturkes@bu.edu\\}
+\homepage{eturkes.com}
+\github{eturkes}
+\extrainfo{researchgate.net/profile/Emir_Turkes}
+
+\begin{document}
+\makecvheader[C]
+\makecvfooter
+  {\today}
+  {Emir Turkes~~~·~~~Brief Résumé}
+  {\thepage}
+
+% Content
+\input{resume/about.tex}
+
+\end{document}
