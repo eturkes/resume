@@ -23,6 +23,8 @@
 \usepackage{lastpage}
 \graphicspath{ {./assets/} }
 \newcommand{\MYhref}[3][darktext]{\href{#2}{\color{#1}{#3}}}
+\let\orighref\href
+\renewcommand{\href}[2]{\orighref{#1}{#2\,\tiny\faExternalLink}}
 
 % Configure page margins with geometry
 \geometry{left=1.4cm, top=0.6cm, right=1.4cm, bottom=1.8cm, footskip=0.5cm}
@@ -40,10 +42,9 @@
 \position{Computational Neuroscientist}
 \address{32 Westport Dr, Whiting, NJ, United States, 08759}
 \mobile{(732) 735-7169}
-\email{eturkes@bu.edu\\}
+\email{eturkes@bu.edu}
 \homepage{eturkes.com}
 \github{eturkes}
-\linkedin{eturkes}
 \photo[rectangle,right]{emir-passport-photo}
 
 \begin{document}
