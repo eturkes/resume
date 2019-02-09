@@ -272,5 +272,5 @@ TSWLatexianTemp*
 # standalone packages
 *.sta
 
-# Exclude binary and other files that should not be version controlled
-/binary/
+# Things that should not be tracked by Git, so are instead stored in Google Drive
+/gdrive/
