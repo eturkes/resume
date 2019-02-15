@@ -16,6 +16,4 @@ limitations under the License.
 
 # Resume of Emir Turkes
 
-[PDF (with photo)](https://drive.google.com/file/d/19RIsMA-_W3Gbra5sllHMm-5Q5I3aQByW/view?usp=sharing)  
-[PDF (without photo)](https://drive.google.com/file/d/1CdeDLzzB63LGUvJCoSrwhgBS8QslbuKh/view?usp=sharing)  
-[PDF (monochrome)](https://drive.google.com/file/d/146-QtOJIzSrLoBBy2lfW2XPxY9qgaeAE/view?usp=sharing)
+[PDF](https://drive.google.com/file/d/19RIsMA-_W3Gbra5sllHMm-5Q5I3aQByW/view?usp=sharing)
