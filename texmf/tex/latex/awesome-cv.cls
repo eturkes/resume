@@ -387,7 +387,7 @@
 \newcommand{\acvHeaderAfterNameSkip}{.3mm}
 \newcommand{\acvHeaderAfterPositionSkip}{.6mm}
 \newcommand{\acvHeaderAfterAddressSkip}{.6mm}
-\newcommand{\acvHeaderIconSep}{\space}
+\newcommand{\acvHeaderIconSep}{\space\space\space\space}
 \newcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
 \newcommand{\acvHeaderAfterSocialSkip}{6mm}
 \newcommand{\acvHeaderAfterQuoteSkip}{5mm}
