@@ -463,7 +463,7 @@
         {}%
         {%
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{mailto:\@email}{\faEnvelope\acvHeaderIconSep\@email}%
+          \faEnvelope\acvHeaderIconSep\@email%
         }%
       \ifthenelse{\isundefined{\@homepage}}%
         {}%
@@ -475,7 +475,7 @@
         {}%
         {%
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://\@github}{\faGithubSquare\acvHeaderIconSep\@github}%
+          \faGithubSquare\acvHeaderIconSep\@github%
         }%
       \ifthenelse{\isundefined{\@gitlab}}%
         {}%
