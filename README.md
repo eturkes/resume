@@ -16,5 +16,5 @@ limitations under the License.
 
 # Resume of Emir Turkes
 
-Compiled PDF can be found below:
+Compiled PDF can be found below:  
 [PDF](https://drive.google.com/file/d/19RIsMA-_W3Gbra5sllHMm-5Q5I3aQByW/view?usp=sharing)
