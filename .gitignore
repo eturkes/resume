@@ -284,4 +284,4 @@ TSWLatexianTemp*
 #*Notes.bib
 
 # Things that should not be tracked by Git, so are instead stored in Google Drive
-/gdrive/
+/gdrive
