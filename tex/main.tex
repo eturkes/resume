@@ -18,6 +18,9 @@
 % Configuration
 \PassOptionsToPackage{unicode}{hyperref}
 \documentclass[11pt, letterpaper]{awesome-cv}
+\makeatletter
+\patchcmd{\sectionstyle}{\bfseries}{\mdseries}{}{}
+\makeatother
 \usepackage{ifxetex}
 \ifxetex
   \usepackage{xeCJK}
