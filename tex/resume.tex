@@ -1,0 +1,117 @@
+% Copyright 2018-2026 Emir Turkes
+%
+% Licensed under the Apache License, Version 2.0 (the "License");
+% you may not use this file except in compliance with the License.
+% You may obtain a copy of the License at
+%
+%     http://www.apache.org/licenses/LICENSE-2.0
+%
+% Unless required by applicable law or agreed to in writing, software
+% distributed under the License is distributed on an "AS IS" BASIS,
+% WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+% See the License for the specific language governing permissions and
+% limitations under the License.
+
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+% Configuration
+\PassOptionsToPackage{unicode}{hyperref}
+\documentclass[11pt, letterpaper]{awesome-cv}
+\renewcommand{\acvHeaderAfterNameSkip}{3mm}
+\renewcommand{\acvHeaderAfterSocialSkip}{5mm}
+\renewcommand{\acvSectionTopSkip}{2.5mm}
+\makeatletter
+\patchcmd{\sectionstyle}{\bfseries}{\mdseries}{}{}
+\makeatother
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{xeCJK}
+  \setCJKmainfont[Path=cjk-fonts/]{ipaexg.ttf}
+\fi
+\definecolor{hyperPink}{HTML}{B509AC}
+\definecolor{hyperRed}{HTML}{da372a}
+\usepackage{xcolor}
+\usepackage{lastpage}
+\graphicspath{ {./assets/} }
+\newcommand{\MYhref}[3][darktext]{\href{#2}{\color{#1}{#3}}}
+\let\orighref\href
+\renewcommand{\href}[2]{\orighref{#1}{#2\,\tiny\faExternalLink}}
+
+% Configure page margins with geometry
+\geometry{left=1.4cm, top=1.2cm, right=1.4cm, bottom=1.8cm, footskip=0.5cm}
+\fontdir[fonts/]
+\colorlet{awesome}{awesome-darknight}
+\definecolor{graytext}{HTML}{5D5D5D}
+\setbool{acvSectionColorHighlight}{true}
+\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
+\makeatletter
+\patchcmd{\@sectioncolor}{\color}{\mdseries\color}{}{}
+\makeatother
+
+% BibLaTeX setup for Publications
+\usepackage{csquotes} % recommended by biblatex
+\usepackage[
+    backend=biber,
+    style=ieee,
+    sorting=ydnt,
+    maxnames=99,
+    doi=true, isbn=false, url=false, eprint=false
+]{biblatex}
+\addbibresource[datatype=bibtex]{resume-publications.bib}
+\renewcommand*{\bibfont}{\small}
+\setlength\bibitemsep{0.2\baselineskip}
+\AtBeginBibliography{\let\href\orighref}
+
+% Show authors through Emir Turkes, then an ellipsis and the final author.
+\newbool{resumeauthorafterself}
+\newbool{resumeauthorsomitted}
+\DeclareNameFormat{author}{%
+    \ifnumequal{\value{listcount}}{1}
+        {\global\boolfalse{resumeauthorafterself}%
+         \global\boolfalse{resumeauthorsomitted}}{}%
+    \ifboolexpr{
+        not bool {resumeauthorafterself}
+        or test {\ifnumequal{\value{listcount}}{\value{listtotal}}}
+    }
+        {\ifbool{resumeauthorsomitted}{\addcomma\space\textellipsis}{}%
+         \usebibmacro{name:given-family}
+             {\namepartfamily}{\namepartgiveni}
+             {\namepartprefix}{\namepartsuffix}}
+        {\global\booltrue{resumeauthorsomitted}}%
+    \ifdefstring{\namepartfamily}{Turkes}
+        {\global\booltrue{resumeauthorafterself}}{}%
+}
+\DeclareDelimFormat{finalnamedelim}{\addcomma\space}
+\renewcommand*{\mkbibcompletenamegivenfamily}[1]{%
+    \ifdefstring{\namepartfamily}{Turkes}{\mkbibbold{#1}}{#1}%
+}
+
+% Personal information
+\name{Emir Turkes, PhD}{}
+\position{Postdoctoral Researcher - Neuroscience, Bioinformatics, AI/ML}
+\extrainfo{
+    \vspace*{0.15cm}
+    \faEnvelope \space\space\space emir.turkes@eturkes.com \quad\textbar\quad
+    \href{https://eturkes.com}{https://eturkes.com} \quad\textbar\quad
+    \href{https://data.duff-lab.org}{https://data.duff-lab.org} \vspace*{0.025cm} \newline
+    \faPhone \space\space\space +81 050 5532 2416 \quad\textbar\quad
+    \faGithub \space\space\space \href{https://github.com/eturkes}{github.com/eturkes} \quad\textbar\quad
+    \faLinkedin \space\space\space \href{https://www.linkedin.com/in/eturkes}{linkedin.com/in/eturkes} \vspace*{0.15cm} \newline
+    \textbf{Current Interest:} Formal verification and neurosymbolic systems in biomedicine \vspace*{0.025cm} \newline
+    \textbf{Nationality:} American \space\space\space\space \textbf{Current Location:} Hokkaido, Japan
+}
+\photo[rectangle,right]{emir-headshot}
+
+\begin{document}
+\makecvheader[C]
+\makecvfooter
+    {\today}
+    {Emir Turkes~~~·~~~Resume}
+    {\thepage\ of \pageref{LastPage} }
+
+% Content
+\input{sections/education.tex}
+\input{sections/resume-experience.tex}
+\input{sections/resume-publications.tex}
+\end{document}
