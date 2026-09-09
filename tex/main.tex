@@ -18,7 +18,9 @@
 % Configuration
 \PassOptionsToPackage{unicode}{hyperref}
 \documentclass[11pt, letterpaper]{awesome-cv}
-\renewcommand{\acvHeaderAfterNameSkip}{1mm}
+\renewcommand{\acvHeaderAfterNameSkip}{3mm}
+\renewcommand{\acvHeaderAfterSocialSkip}{5mm}
+\renewcommand{\acvSectionTopSkip}{2.5mm}
 \makeatletter
 \patchcmd{\sectionstyle}{\bfseries}{\mdseries}{}{}
 \makeatother
@@ -53,28 +55,50 @@
     backend=biber,
     style=ieee,
     sorting=ydnt,
-    maxnames=20,
+    maxnames=99,
     doi=true, isbn=false, url=false, eprint=false
 ]{biblatex}
 \addbibresource[datatype=bibtex]{publications.bib}
-\addbibresource[datatype=bibtex]{book-chapters.bib}
-\addbibresource[datatype=bibtex]{software.bib}
 \renewcommand*{\bibfont}{\small}
-\setlength\bibitemsep{0.25\baselineskip}
+\setlength\bibitemsep{0.2\baselineskip}
 \AtBeginBibliography{\let\href\orighref}
 
+% Show authors through Emir Turkes, then an ellipsis and the final author.
+\newbool{resumeauthorafterself}
+\newbool{resumeauthorsomitted}
+\DeclareNameFormat{author}{%
+    \ifnumequal{\value{listcount}}{1}
+        {\global\boolfalse{resumeauthorafterself}%
+         \global\boolfalse{resumeauthorsomitted}}{}%
+    \ifboolexpr{
+        not bool {resumeauthorafterself}
+        or test {\ifnumequal{\value{listcount}}{\value{listtotal}}}
+    }
+        {\ifbool{resumeauthorsomitted}{\addcomma\space\textellipsis}{}%
+         \usebibmacro{name:given-family}
+             {\namepartfamily}{\namepartgiveni}
+             {\namepartprefix}{\namepartsuffix}}
+        {\global\booltrue{resumeauthorsomitted}}%
+    \ifdefstring{\namepartfamily}{Turkes}
+        {\global\booltrue{resumeauthorafterself}}{}%
+}
+\DeclareDelimFormat{finalnamedelim}{\addcomma\space}
+\renewcommand*{\mkbibcompletenamegivenfamily}[1]{%
+    \ifdefstring{\namepartfamily}{Turkes}{\mkbibbold{#1}}{#1}%
+}
+
 % Personal information
-\name{Emir Turkes}{}
+\name{Emir Turkes, PhD}{}
 \position{Postdoctoral Researcher - Neuroscience, Bioinformatics, AI/ML}
 \extrainfo{
-    \vspace*{0.25cm}
+    \vspace*{0.15cm}
     \faEnvelope \space\space\space emir.turkes@eturkes.com \quad\textbar\quad
     \href{https://eturkes.com}{https://eturkes.com} \quad\textbar\quad
     \href{https://data.duff-lab.org}{https://data.duff-lab.org} \vspace*{0.025cm} \newline
     \faPhone \space\space\space +81 050 5532 2416 \quad\textbar\quad
     \faGithub \space\space\space \href{https://github.com/eturkes}{github.com/eturkes} \quad\textbar\quad
-    \faLinkedin \space\space\space \href{https://www.linkedin.com/in/eturkes}{linkedin.com/in/eturkes} \vspace*{0.25cm} \newline
-    \textbf{Research Interest:} Neurodegeneration and computational methods development \vspace*{0.025cm} \newline
+    \faLinkedin \space\space\space \href{https://www.linkedin.com/in/eturkes}{linkedin.com/in/eturkes} \vspace*{0.15cm} \newline
+    \textbf{Current Interest:} Formal verification and neurosymbolic systems in biomedicine \vspace*{0.025cm} \newline
     \textbf{Nationality:} American \space\space\space\space \textbf{Current Location:} Hokkaido, Japan
 }
 \photo[rectangle,right]{emir-headshot}
@@ -83,15 +107,11 @@
 \makecvheader[C]
 \makecvfooter
     {\today}
-    {Emir Turkes~~~·~~~CV}
+    {Emir Turkes~~~·~~~Resume}
     {\thepage\ of \pageref{LastPage} }
 
 % Content
 \input{sections/education.tex}
-\input{sections/awards.tex}
-\input{sections/teaching.tex}
 \input{sections/experience.tex}
 \input{sections/publications.tex}
-\input{sections/book-chapters.tex}
-\input{sections/software.tex}
 \end{document}

@@ -16,5 +16,15 @@ limitations under the License.
 
 # Resume of Emir Turkes
 
-Compiled PDF can be found below:  
-[PDF](https://drive.google.com/file/d/19RIsMA-_W3Gbra5sllHMm-5Q5I3aQByW/view?usp=sharing)
+The main document is the one-page résumé in [tex/main.tex](tex/main.tex).
+The retired CV remains available in Git history.
+
+## Build
+
+From the repository root, build with XeLaTeX and Biber inside Arch:
+
+```sh
+distrobox enter Arch -- latexmk -xelatex -interaction=nonstopmode -halt-on-error -cd tex/main.tex
+```
+
+The compiled output is `tex/main.pdf`.
